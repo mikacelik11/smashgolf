@@ -4,6 +4,8 @@ import './App.css';
 function App() {
   const [isSignedIn, setIsSignedIn] = useState(false);
 
+  const [activeSection, setActiveSection] = useState('home');
+
   const [users, setUsers] = useState([]);
 
   const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
@@ -82,9 +84,9 @@ function App() {
         </div>
         <div className="navbar-right">
           <ul className="nav-links">
-            <li>Home</li>
-            <li>Group</li>
-            <li>Profile</li>
+            <li onClick = {() => setActiveSection('home')}>Home</li>
+            <li onClick = {() => setActiveSection('group')}>Group</li>
+            <li onClick = {() => setActiveSection('profile')}>Profile</li>
           </ul>
           {isSignedIn ? (
             <button className="auth-button" onClick={handleSignOut}>
@@ -97,6 +99,37 @@ function App() {
           )}
         </div>
       </nav>
+
+      <main className="home-section">
+        {isSignedIn ? (
+          <>
+            {activeSection === 'home' && (
+              <div className="content">
+                <h2>Welcome Home</h2>
+                <p>This is your home content. Customize as needed.</p>
+              </div>
+            )}
+            {activeSection === 'group' && (
+              <div className="content">
+                <h2>Your Groups</h2>
+                <p>Here you can manage your groups.</p>
+              </div>
+            )}
+            {activeSection === 'profile' && (
+              <div className="content">
+                <h2>Your Profile</h2>
+                <p>Profile details go here.</p>
+              </div>
+            )}
+          </>
+        ) : (
+          <div className="not-signed-in">
+            <p>Sign in to view content</p>
+          </div>
+        )}
+      </main>
+
+
       {isSignInModalOpen && (
         <div className="modal">
           <div className="modal-content">
@@ -138,20 +171,20 @@ function App() {
           <div className="modal-content">
             <h2>Create Account</h2>
             <input
-              type="text"
-              placeholder="Username"
+              type="text" // renders a single line text input field
+              placeholder="Username" // the word username will appear inside the field in a lighter color
               value={signUpUsername}
               onChange={(e) => setSignUpUsername(e.target.value)}
             />
             <input
-              type="password"
-              placeholder="Password"
+              type="password" // renders a single line text input field
+              placeholder="Password" // masks the input
               value={signUpPassword}
               onChange={(e) => setSignUpPassword(e.target.value)}
             />
-            {signUpError && <p className="error">{signUpError}</p>}
+            {signUpError && <p className="error">{signUpError}</p>} 
             <button onClick={handleSignUp}>Create Account</button>
-            <button className="modal-close" onClick={closeSignUpModal}>
+            <button className="modal-close" onClick={closeSignUpModal}> 
               Close
             </button>
           </div>
@@ -162,3 +195,4 @@ function App() {
 } 
 
 export default App;
+
