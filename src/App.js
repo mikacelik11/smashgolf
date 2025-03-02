@@ -4,7 +4,7 @@ import './App.css';
 function App() {
   const [isSignedIn, setIsSignedIn] = useState(false);
 
-  const [activeSection, setActiveSection] = useState('home');
+  const [activeSection, setActiveSection] = useState('home'); // sets the base section of the website to home section
 
   const [users, setUsers] = useState([]);
 
@@ -20,6 +20,9 @@ function App() {
   const [signUpUsername, setSignUpUsername] = useState('');
   const [signUpPassword, setSignUpPassword] = useState('');
   const [signUpError, setSignUpError] = useState('');
+
+
+  const [isCreateGroupModelOpen, setIsCreateModalOpen] = useState(false);
 
    // Open and reset the sign in modal
    const openSignInModal = () => {
@@ -76,6 +79,10 @@ function App() {
     setIsSignedIn(false);
   };
 
+
+  const openCreateGroupModal = () => setIsCreateModalOpen(true);
+  const closeCreateGroupModal = () => setIsCreateModalOpen(false);
+
   return (
     <div className="App">
       <nav className="navbar">
@@ -84,7 +91,7 @@ function App() {
         </div>
         <div className="navbar-right">
           <ul className="nav-links">
-            <li onClick = {() => setActiveSection('home')}>Home</li>
+            <li onClick = {() => setActiveSection('home')}>Home</li> 
             <li onClick = {() => setActiveSection('group')}>Group</li>
             <li onClick = {() => setActiveSection('profile')}>Profile</li>
           </ul>
@@ -106,7 +113,10 @@ function App() {
             {activeSection === 'home' && (
               <div className="content">
                 <h2>Welcome Home</h2>
-                <p>This is your home content. Customize as needed.</p>
+                <p>Look for avalible groups, and start swinging!</p>
+                <div>
+                  <button className = "create-group-button" onClick={openCreateGroupModal}>Create Group</button>
+                </div>
               </div>
             )}
             {activeSection === 'group' && (
@@ -190,6 +200,8 @@ function App() {
           </div>
         </div>
       )}
+
+      
     </div>
   );
 } 
