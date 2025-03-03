@@ -87,7 +87,7 @@ function App() {
     <div className="App">
       <nav className="navbar">
         <div className="navbar-left">
-          <h1>smashgolf</h1>
+          <h1>Smash Golf</h1>
         </div>
         <div className="navbar-right">
           <ul className="nav-links">
