@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import CreateGroupWindow from './CreateGroupWindow';
+import NewWindow from 'react-new-window';
 import './App.css';
 
 function App() {
@@ -22,7 +24,7 @@ function App() {
   const [signUpError, setSignUpError] = useState('');
 
 
-  const [isCreateGroupModelOpen, setIsCreateModalOpen] = useState(false);
+  const [showCreateGroup, setShowCreateGroup] = useState(false);
 
    // Open and reset the sign in modal
    const openSignInModal = () => {
@@ -80,43 +82,8 @@ function App() {
   };
 
 
-  const openCreateGroupWindow = () => {
-    const newWindow = window.open(
-      '',
-      'CreateGroupWindow',
-      'width=400,height=300'
-    );
-    if (newWindow) {
-      newWindow.document.write(`
-        <html>
-          <head>
-            <title>Create Group</title>
-            <style>
-              body { 
-                font-family: Arial, sans-serif; 
-                text-align: center; 
-                margin-top: 50px; 
-              }
-              .close-button { 
-                margin-top: 20px; 
-                padding: 10px 20px; 
-                background-color: #ddd; 
-                border: none; 
-                cursor: pointer; 
-                border-radius: 3px; 
-              }
-            </style>
-          </head>
-          <body>
-            <!-- Empty window for future customization -->
-            <button class="close-button" onclick="window.close()">Close</button>
-          </body>
-        </html>
-      `);
-      newWindow.document.close();
-    }
-  };
-  //const closeCreateGroupModal = () => setIsCreateModalOpen(false);
+  const openCreateGroupWindow = () => setShowCreateGroup(true);
+  const closeCreateGroupWindow = () => setShowCreateGroup(false);
 
   return (
     <div className="App">
@@ -234,6 +201,12 @@ function App() {
             </button>
           </div>
         </div>
+      )}
+
+      {showCreateGroup && (
+        <NewWindow title="Create Group" onUnload={closeCreateGroupWindow}>
+          <CreateGroupWindow onClose={closeCreateGroupWindow} />
+        </NewWindow>
       )}
 
       
