@@ -80,8 +80,43 @@ function App() {
   };
 
 
-  const openCreateGroupModal = () => setIsCreateModalOpen(true);
-  const closeCreateGroupModal = () => setIsCreateModalOpen(false);
+  const openCreateGroupWindow = () => {
+    const newWindow = window.open(
+      '',
+      'CreateGroupWindow',
+      'width=400,height=300'
+    );
+    if (newWindow) {
+      newWindow.document.write(`
+        <html>
+          <head>
+            <title>Create Group</title>
+            <style>
+              body { 
+                font-family: Arial, sans-serif; 
+                text-align: center; 
+                margin-top: 50px; 
+              }
+              .close-button { 
+                margin-top: 20px; 
+                padding: 10px 20px; 
+                background-color: #ddd; 
+                border: none; 
+                cursor: pointer; 
+                border-radius: 3px; 
+              }
+            </style>
+          </head>
+          <body>
+            <!-- Empty window for future customization -->
+            <button class="close-button" onclick="window.close()">Close</button>
+          </body>
+        </html>
+      `);
+      newWindow.document.close();
+    }
+  };
+  //const closeCreateGroupModal = () => setIsCreateModalOpen(false);
 
   return (
     <div className="App">
@@ -115,7 +150,7 @@ function App() {
                 <h2>Welcome Home</h2>
                 <p>Look for avalible groups, and start swinging!</p>
                 <div>
-                  <button className = "create-group-button" onClick={openCreateGroupModal}>Create Group</button>
+                  <button className = "create-group-button" onClick={openCreateGroupWindow}>Create Group</button>
                 </div>
               </div>
             )}
