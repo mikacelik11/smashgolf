@@ -26,6 +26,12 @@ function App() {
 
   const [showCreateGroup, setShowCreateGroup] = useState(false);
 
+  const [groupPosts, setGroupPosts] = useState([]);
+
+  const handleCreateGroup = (newPost) => {
+    setGroupPosts([...groupPosts, {id: Date.now(), ...newPost }])
+  }
+
    // Open and reset the sign in modal
    const openSignInModal = () => {
     setSignInError('');
@@ -118,6 +124,20 @@ function App() {
                 <p>Look for avalible groups, and start swinging!</p>
                 <div>
                   <button className = "create-group-button" onClick={openCreateGroupWindow}>Create Group</button>
+                  {groupPosts.length === 0 ? (
+                    <p>No group posts yet.</p>
+                  ) : (
+                    groupPosts.map((post) => (
+                      <div key={post.id} className="post-card">
+                        <p><strong>Location:</strong> {post.golfLocation}</p>
+                        <p><strong>Skill:</strong> {post.skill}</p>
+                        <p><strong>Players Needed:</strong> {post.players}</p>
+                        <p><strong>Description:</strong> {post.description}</p>
+                        <p><strong>Timestamp:</strong> {post.timestamp}</p>
+                        <p><strong>Posted By:</strong> {post.owner}</p>
+                    </div>
+                    ))
+                  )}
                 </div>
               </div>
             )}
@@ -205,7 +225,10 @@ function App() {
 
       {showCreateGroup && (
         <NewWindow title="Create Group" onUnload={closeCreateGroupWindow}>
-          <CreateGroupWindow onClose={closeCreateGroupWindow} />
+        <CreateGroupWindow
+          onClose={closeCreateGroupWindow}
+          onCreateGroup={handleCreateGroup}
+        />
         </NewWindow>
       )}
 

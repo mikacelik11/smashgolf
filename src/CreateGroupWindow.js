@@ -1,17 +1,27 @@
 import React, { useState } from 'react';
-import './CreateGroupWindow.css';  
+import './CreateGroupWindow.css';
 
-function CreateGroupWindow({ onClose }) {
+function CreateGroupWindow({ onClose, onCreateGroup, currentUser }) {
   const [golfLocation, setGolfLocation] = useState('');
   const [skill, setSkill] = useState('beginner');
   const [players, setPlayers] = useState('1');
   const [description, setDescription] = useState('');
 
   const postGroup = () => {
-    console.log('Golf Course Location:', golfLocation);
-    console.log('Skill Level:', skill);
-    console.log('Number of Players Needed:', players);
-    console.log('Description:', description);
+    const newPost = {
+      golfLocation,
+      skill,
+      players,
+      description,
+      timestamp: new Date().toLocaleString(), // Timestamp each post
+      owner: currentUser, // Use this if you want to record the post's owner
+      requests: [],
+      accepted: []
+    };
+
+    // Call the parent's onCreateGroup function to add the post to App's state
+    onCreateGroup(newPost);
+    onClose(); // Close the window after posting
   };
 
   return (
