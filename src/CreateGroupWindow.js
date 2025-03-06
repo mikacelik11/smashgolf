@@ -13,15 +13,15 @@ function CreateGroupWindow({ onClose, onCreateGroup, currentUser }) {
       skill,
       players,
       description,
-      timestamp: new Date().toLocaleString(), // Timestamp each post
-      owner: currentUser, // Use this if you want to record the post's owner
+      timestamp: new Date().toLocaleString(), 
+      owner: currentUser, 
       requests: [],
       accepted: []
     };
 
-    // Call the parent's onCreateGroup function to add the post to App's state
+    
     onCreateGroup(newPost);
-    onClose(); // Close the window after posting
+    onClose(); 
   };
 
   return (

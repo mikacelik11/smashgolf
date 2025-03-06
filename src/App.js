@@ -203,14 +203,14 @@ function App() {
           <div className="modal-content">
             <h2>Create Account</h2>
             <input
-              type="text" // renders a single line text input field
-              placeholder="Username" // the word username will appear inside the field in a lighter color
+              type="text" 
+              placeholder="Username" 
               value={signUpUsername}
               onChange={(e) => setSignUpUsername(e.target.value)}
             />
             <input
-              type="password" // renders a single line text input field
-              placeholder="Password" // masks the input
+              type="password" 
+              placeholder="Password" 
               value={signUpPassword}
               onChange={(e) => setSignUpPassword(e.target.value)}
             />
