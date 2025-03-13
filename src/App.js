@@ -91,8 +91,12 @@ function App() {
   const openCreateGroupWindow = () => setShowCreateGroup(true);
   const closeCreateGroupWindow = () => setShowCreateGroup(false);
 
+
+  // renders the website that splits the website into 3 sections home, group, and profile.
+  // When users are signed in and in home they will be able to see posts and be able to join the groups
+  // profile will be able to edit skill level, username, etc
   return (
-    <div className="App">
+    <div className="App"> 
       <nav className="navbar">
         <div className="navbar-left">
           <h1>Smash Golf</h1>

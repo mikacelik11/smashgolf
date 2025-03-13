@@ -2,31 +2,31 @@ import React, { useState } from 'react';
 import './CreateGroupWindow.css';
 
 function CreateGroupWindow({ onClose, onCreateGroup, currentUser }) {
-  const [golfLocation, setGolfLocation] = useState('');
-  const [skill, setSkill] = useState('beginner');
-  const [players, setPlayers] = useState('1');
-  const [description, setDescription] = useState('');
+  const [golfLocation, setGolfLocation] = useState(''); // set location to an empty string
+  const [skill, setSkill] = useState('beginner'); // set base difficulty as beginner
+  const [players, setPlayers] = useState('1'); // accounts for user
+  const [description, setDescription] = useState(''); // set descirption to empty string
 
   const postGroup = () => {
     const newPost = {
-      golfLocation,
+      golfLocation, // vales assigned to the corresponding keys in the object
       skill,
       players,
       description,
-      timestamp: new Date().toLocaleString(), 
-      owner: currentUser, 
-      requests: [],
-      accepted: []
+      timestamp: new Date().toLocaleString(), // gives date on when group was posted
+      owner: currentUser, // labels the owner of the post
+      requests: [], // empty array to store members if they want to be in the group
+      accepted: [] // empty array to store members that are in the group
     };
 
     
-    onCreateGroup(newPost);
-    onClose(); 
+    onCreateGroup(newPost); // used to handle the creation of a new group when user submits form
+    onClose(); // closes the create group window
   };
 
   return (
     <div className="create-group-window">
-      <h2>Create Group</h2>
+      <h2>Create Group</h2> 
 
       <label htmlFor="golfLocation">Golf Course Location:</label>
       <input
