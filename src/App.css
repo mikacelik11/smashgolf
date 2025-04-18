@@ -37,7 +37,7 @@
   cursor: pointer;
 }
 
-/* Optional: Add hover effect for the nav items */
+
 .navbar-right .nav-links li:hover {
   text-decoration: underline;
 }
@@ -73,4 +73,27 @@
 
 .create-group-button:hover {
   background-color: #0056b3;
+}
+
+
+.post-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 12px 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  background: #fff;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+.post-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+
+.post-card:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
 }

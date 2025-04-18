@@ -133,6 +133,21 @@ function App() {
                   ) : (
                     groupPosts.map((post) => (
                       <div key={post.id} className="post-card">
+                      <div
+                        key={post.id}
+                        className="post-card"
+                        role="button"
+                        tabIndex={0}
+                        onClick={() => {
+                         // TODO: open this post in a new window
+                        console.log('Clicked post', post.id);
+                        }}
+                        onKeyPress={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                        console.log('Clicked post via keyboard', post.id);
+                        }
+                        }}
+                      >
                         <p><strong>Location:</strong> {post.golfLocation}</p>
                         <p><strong>Skill:</strong> {post.skill}</p>
                         <p><strong>Players Needed:</strong> {post.players}</p>
@@ -140,6 +155,8 @@ function App() {
                         <p><strong>Timestamp:</strong> {post.timestamp}</p>
                         <p><strong>Posted By:</strong> {post.owner}</p>
                     </div>
+                    </div>
+
                     ))
                   )}
                 </div>
