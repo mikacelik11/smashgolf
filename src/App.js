@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import CreateGroupWindow from './CreateGroupWindow';
 import NewWindow from 'react-new-window';
+import PostDetailWindow from './PostDetailWindow';
 import './App.css';
 
 function App() {
+  const [selectedPost, setSelectedPost] = useState(null);
+
   const [isSignedIn, setIsSignedIn] = useState(false);
 
   const [activeSection, setActiveSection] = useState('home'); // sets the base section of the website to home section
@@ -132,7 +135,7 @@ function App() {
                     <p>No group posts yet.</p>
                   ) : (
                     groupPosts.map((post) => (
-                      <div key={post.id} className="post-card">
+                      <div key={post.id} className="post-card"> 
                       <div
                         key={post.id}
                         className="post-card"
@@ -148,12 +151,25 @@ function App() {
                         }
                         }}
                       >
+                      <div 
+                        key={post.id}
+                        className="post-card"
+                        role="button"
+                        tabIndex={0}
+                        onClick={() => setSelectedPost(post)}
+                        onKeyPress={(e) => {
+                          if (e.key === 'Enter' || e.key === ' ') { 
+                            setSelectedPost(post);
+                          }
+                        }}
+                      >
                         <p><strong>Location:</strong> {post.golfLocation}</p>
                         <p><strong>Skill:</strong> {post.skill}</p>
                         <p><strong>Players Needed:</strong> {post.players}</p>
                         <p><strong>Description:</strong> {post.description}</p>
                         <p><strong>Timestamp:</strong> {post.timestamp}</p>
                         <p><strong>Posted By:</strong> {post.owner}</p>
+                    </div>
                     </div>
                     </div>
 
@@ -252,6 +268,19 @@ function App() {
         />
         </NewWindow>
       )}
+
+      {selectedPost && (
+        <NewWindow
+          title={`Group ${selectedPost.id}`}
+          onUnload={() => setSelectedPost(null)}
+        >
+          <PostDetailWindow
+            post={selectedPost}
+            onClose={() => setSelectedPost(null)}
+          />
+        </NewWindow>
+      )}
+
 
       
     </div>
