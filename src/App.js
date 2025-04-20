@@ -269,7 +269,7 @@ function App() {
         </NewWindow>
       )}
 
-      {selectedPost && (
+      {selectedPost && ( 
         <NewWindow
           title={`Group ${selectedPost.id}`}
           onUnload={() => setSelectedPost(null)}
