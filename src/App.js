@@ -61,6 +61,10 @@ function App() {
 
   // Handle the sign in attempt by matching credentials from our users array
   const handleSignIn = () => {
+    if (!signInUsername.trim() || !signInPassword) {
+      setSignInError('Please enter both username and password.');
+      return;
+    }
     const user = users.find(
       (u) => u.username === signInUsername && u.password === signInPassword
     );
@@ -74,6 +78,12 @@ function App() {
 
   // Handle account creation; checks if the username is already taken
   const handleSignUp = () => {
+
+    if (!signUpUsername.trim() || !signUpPassword) {
+      setSignUpError('Username and Password are required');
+      return;
+    }
+
     const userExists = users.some((u) => u.username === signUpUsername);
     if (userExists) {
       setSignUpError('Username is already taken.');
@@ -269,14 +279,18 @@ function App() {
         </NewWindow>
       )}
 
+
+
       {selectedPost && ( 
         <NewWindow
-          title={`Group ${selectedPost.id}`}
+          title={`Group ${selectedPost.id}`} // set the windows title bar to group id
+          // when the window is closeed by thr user, clear selectedPost
           onUnload={() => setSelectedPost(null)}
         >
           <PostDetailWindow
-            post={selectedPost}
-            onClose={() => setSelectedPost(null)}
+            post={selectedPost}  // pass the full post object so the child can display it
+
+            onClose={() => setSelectedPost(null)} // given the child a way to close itself
           />
         </NewWindow>
       )}
