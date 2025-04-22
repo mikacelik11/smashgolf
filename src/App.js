@@ -197,7 +197,7 @@ function App() {
             {activeSection === 'profile' && (
               <div className="content">
                 <h2>Your Profile</h2>
-                <p>Profile details go here.</p>
+                <p>Edit your profile</p>
               </div>
             )}
           </>
