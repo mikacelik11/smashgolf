@@ -16,6 +16,8 @@ function App() {
   const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
   const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
 
+  const [currentUser, setCurrentUser] = useState(null);
+
   // Sign In form state
   const [signInUsername, setSignInUsername] = useState('');
   const [signInPassword, setSignInPassword] = useState('');
@@ -69,6 +71,7 @@ function App() {
       (u) => u.username === signInUsername && u.password === signInPassword
     );
     if (user) {
+      setCurrentUser(user);
       setIsSignedIn(true);
       closeSignInModal();
     } else {
@@ -78,7 +81,12 @@ function App() {
 
   // Handle account creation; checks if the username is already taken
   const handleSignUp = () => {
-
+    const newUser = {
+      username: signUpUsername,
+      password: signUpPassword,
+      skill: 'beginner',
+      location: ''
+    };
     if (!signUpUsername.trim() || !signUpPassword) {
       setSignUpError('Username and Password are required');
       return;
@@ -89,6 +97,8 @@ function App() {
       setSignUpError('Username is already taken.');
     } else {
       setUsers([...users, { username: signUpUsername, password: signUpPassword }]);
+      setUsers([...users, newUser]);
+      setCurrentUser(newUser);
       setIsSignedIn(true);
       closeSignUpModal();
       closeSignInModal();
@@ -98,6 +108,7 @@ function App() {
   // Handle signing out
   const handleSignOut = () => {
     setIsSignedIn(false);
+    setCurrentUser(null);
   };
 
 
@@ -198,6 +209,15 @@ function App() {
               <div className="content">
                 <h2>Your Profile</h2>
                 <p>Edit your profile</p>
+                <div className="profile-item">
+                  <strong>Username:</strong> {currentUser.username}
+                </div>
+                <div className="profile-item">
+                  <strong>Skill Level:</strong> {currentUser.skill}
+                </div>
+                <div className="profile-item">
+                  <strong>Location:</strong> {currentUser.location || 'Not set'}
+                </div>
               </div>
             )}
           </>
