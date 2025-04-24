@@ -205,21 +205,50 @@ function App() {
                 <p>Here you can manage your groups.</p>
               </div>
             )}
-            {activeSection === 'profile' && (
-              <div className="content">
-                <h2>Your Profile</h2>
-                <p>Edit your profile</p>
-                <div className="profile-item">
-                  <strong>Username:</strong> {currentUser.username}
+           
+            {activeSection === 'profile' && currentUser && (
+              <div className="profile-container">
+                {/* Avatar circle (just first letter for now) */}
+                <div className="profile-avatar">
+                  {currentUser.username[0].toUpperCase()}
                 </div>
-                <div className="profile-item">
-                  <strong>Skill Level:</strong> {currentUser.skill}
+
+                {/* Username, styled big and clickable */}
+                <h2
+                  className="profile-username"
+                  role="button"
+                  tabIndex={0}
+                /* TODO: wire up click-to-edit */
+                >
+                  {currentUser.username}
+                </h2>
+
+                {/* Each field is its own “row”, clickable for editing */}
+                <div
+                  className="profile-field"
+                  role="button"
+                  tabIndex={0}
+                /* TODO: wire up click-to-edit */
+                >
+                  <span className="field-label">Skill Level</span>
+                  <span className="field-value">{currentUser.skill}</span>
                 </div>
-                <div className="profile-item">
-                  <strong>Location:</strong> {currentUser.location || 'Not set'}
+
+                <div
+                  className="profile-field"
+                  role="button"
+                  tabIndex={0}
+                /* TODO: wire up click-to-edit */
+                >
+                  <span className="field-label">Location</span>
+                  <span className="field-value">
+                    {currentUser.location || 'Not set'}
+                  </span>
                 </div>
               </div>
             )}
+
+
           </>
         ) : (
           <div className="not-signed-in">
