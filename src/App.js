@@ -17,6 +17,7 @@ function App() {
   const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
 
   const [currentUser, setCurrentUser] = useState(null);
+  const [isEditingSkill, setIsEditingSkill] = useState(false);
 
   // Sign In form state
   const [signInUsername, setSignInUsername] = useState('');
@@ -36,6 +37,16 @@ function App() {
   const handleCreateGroup = (newPost) => {
     setGroupPosts([...groupPosts, {id: Date.now(), ...newPost }])
   }
+
+  const handleSkillChange = (newSkill) => {
+    const updatedUser = { ...currentUser, skill: newSkill };
+    setCurrentUser(updatedUser);
+    setUsers(users.map((u) =>
+      u.username === updatedUser.username ? updatedUser : u
+    ));
+    setIsEditingSkill(false);
+  };
+
 
    // Open and reset the sign in modal
    const openSignInModal = () => {
@@ -228,10 +239,23 @@ function App() {
                   className="profile-field"
                   role="button"
                   tabIndex={0}
+                  onClick={() => setIsEditingSkill(true)}
                 /* TODO: wire up click-to-edit */
                 >
-                  <span className="field-label">Skill Level</span>
-                  <span className="field-value">{currentUser.skill}</span>
+                   <span className="field-label">Skill Level</span>
+                  {isEditingSkill ? (
+                    <select
+                      value={currentUser.skill}
+                      onChange={(e) => handleSkillChange(e.target.value)}
+                      onBlur={() => setIsEditingSkill(false)}
+                      autoFocus
+                    >
+                      <option value="beginner">Beginner</option>
+                      <option value="intermediate">Intermediate</option>
+                      <option value="advanced">Advanced</option>
+                    </select>
+                  
+                  ) : (<span className="field-value">{currentUser.skill}</span>)}
                 </div>
 
                 <div
