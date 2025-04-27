@@ -18,6 +18,7 @@ function App() {
 
   const [currentUser, setCurrentUser] = useState(null);
   const [isEditingSkill, setIsEditingSkill] = useState(false);
+  const [isEditingLocation, setIsEditingLocation] = useState(false);
 
   // Sign In form state
   const [signInUsername, setSignInUsername] = useState('');
@@ -45,6 +46,16 @@ function App() {
       u.username === updatedUser.username ? updatedUser : u
     ));
     setIsEditingSkill(false);
+  };
+
+
+  const handleLocationChange = (newLocation) => {
+    const updatedUser = { ...currentUser, location: newLocation };
+    setCurrentUser(updatedUser);
+    setUsers(users.map((u) =>
+      u.username === updatedUser.username ? updatedUser : u
+    ));
+    setIsEditingLocation(false);
   };
 
 
@@ -262,12 +273,23 @@ function App() {
                   className="profile-field"
                   role="button"
                   tabIndex={0}
-                /* TODO: wire up click-to-edit */
+                  onClick={() => setIsEditingLocation(true)}
                 >
                   <span className="field-label">Location</span>
-                  <span className="field-value">
-                    {currentUser.location || 'Not set'}
-                  </span>
+                  {isEditingLocation ? (
+                    <input
+                      type="text"
+                      value={currentUser.location}
+                      onChange={(e) => setCurrentUser({
+                        ...currentUser,
+                        location: e.target.value
+                      })}
+                      onBlur={(e) => handleLocationChange(e.target.value)}
+                      autoFocus
+                    />
+                  ) : (
+                    <span className="field-value">{currentUser.location || 'Not set'}</span>
+                  )}
                 </div>
               </div>
             )}
