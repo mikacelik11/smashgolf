@@ -152,6 +152,7 @@ function App() {
             <li onClick = {() => setActiveSection('home')}>Home</li> 
             <li onClick = {() => setActiveSection('group')}>Group</li>
             <li onClick = {() => setActiveSection('profile')}>Profile</li>
+            <li onClick={() => setActiveSection('about')}>About</li>
           </ul>
           {isSignedIn ? (
             <button className="auth-button" onClick={handleSignOut}>
@@ -362,6 +363,13 @@ function App() {
               Close
             </button>
           </div>
+        </div>
+      )}
+      {activeSection === 'about' && (
+        <div className="content">
+          <h2>About Smash Golf</h2>
+          <p>Smash Golf is a platform designed to connect golfers of all skill levels, helping you find playing partners and discover new courses.</p>
+          <p>Our mission is to create a vibrant community where golfers can share their passion, improve their game, and enjoy the sport together.</p>
         </div>
       )}
 
