@@ -212,7 +212,7 @@ function App() {
                         <p><strong>Players Needed:</strong> {post.players}</p>
                         <p><strong>Description:</strong> {post.description}</p>
                         <p><strong>Timestamp:</strong> {post.timestamp}</p>
-                        <p><strong>Posted By:</strong> {post.owner}</p>
+                        <p><strong>Posted By:</strong> {currentUser.username}</p>
                     </div>
                     </div>
                     </div>
