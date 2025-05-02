@@ -31,9 +31,9 @@ function App() {
   const [signUpError, setSignUpError] = useState('');
 
 
-  const [showCreateGroup, setShowCreateGroup] = useState(false);
+  const [showCreateGroup, setShowCreateGroup] = useState(false); // this is logic so we now when to show the create group 
 
-  const [groupPosts, setGroupPosts] = useState([]);
+  const [groupPosts, setGroupPosts] = useState([]); // list of group posts 
 
   const handleCreateGroup = (newPost) => {
     setGroupPosts([...groupPosts, {id: Date.now(), ...newPost }])
@@ -48,7 +48,7 @@ function App() {
     setIsEditingSkill(false);
   };
 
-
+  // handles the location in your profile section.
   const handleLocationChange = (newLocation) => {
     const updatedUser = { ...currentUser, location: newLocation };
     setCurrentUser(updatedUser);
