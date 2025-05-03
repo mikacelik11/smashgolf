@@ -28,7 +28,7 @@ function App() {
   // Sign Up form state
   const [signUpUsername, setSignUpUsername] = useState('');
   const [signUpPassword, setSignUpPassword] = useState('');
-  const [signUpError, setSignUpError] = useState('');
+  const [signUpError, setSignUpError] = useState(''); // sets an error if something in the login is done incorrectly
 
 
   const [showCreateGroup, setShowCreateGroup] = useState(false); // this is logic so we now when to show the create group 
