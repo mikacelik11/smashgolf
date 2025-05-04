@@ -39,6 +39,7 @@ function App() {
     setGroupPosts([...groupPosts, {id: Date.now(), ...newPost }])
   }
 
+  // handles the ability for a user to change there skill level in the profile section.
   const handleSkillChange = (newSkill) => {
     const updatedUser = { ...currentUser, skill: newSkill };
     setCurrentUser(updatedUser);
