@@ -11,7 +11,7 @@ function App() {
 
   const [activeSection, setActiveSection] = useState('home'); // sets the base section of the website to home section
 
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState([]); // creates a list of users
 
   const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
   const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
