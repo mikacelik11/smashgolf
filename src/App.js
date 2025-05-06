@@ -151,21 +151,27 @@ function App() {
           <h1>Smash Golf</h1>
         </div>
         <div className="navbar-right">
+
           <ul className="nav-links">
+          {!isSignedIn ? (
+              <li>
+                <button className="auth-button" onClick={openSignInModal}>
+                  Sign In
+                </button>
+              </li>
+            ) : (
+              <li>
+                <button className="auth-button" onClick={handleSignOut}>
+                  Sign Out
+                </button>
+              </li>
+            )}
             <li onClick = {() => setActiveSection('home')}>Home</li> 
             <li onClick = {() => setActiveSection('group')}>Group</li>
             <li onClick = {() => setActiveSection('profile')}>Profile</li>
             <li onClick={() => setActiveSection('about')}>About</li>
           </ul>
-          {isSignedIn ? (
-            <button className="auth-button" onClick={handleSignOut}>
-              Sign Out
-            </button>
-          ) : (
-            <button className="auth-button" onClick={openSignInModal}>
-              Sign In
-            </button>
-          )}
+        
         </div>
       </nav>
 
