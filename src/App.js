@@ -13,9 +13,11 @@ function App() {
 
   const [users, setUsers] = useState([]); // creates a list of users
 
+  // used for the sign in window
   const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
   const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
 
+  
   const [currentUser, setCurrentUser] = useState(null); // sets the current user so the appliccation knows the data is from the user that is logged in
   const [isEditingSkill, setIsEditingSkill] = useState(false);  // sets the skill to the users liking
   const [isEditingLocation, setIsEditingLocation] = useState(false);  // sets the location in the profile section to whatever user is looking for
