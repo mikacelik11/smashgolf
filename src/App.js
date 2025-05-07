@@ -5,7 +5,7 @@ import PostDetailWindow from './PostDetailWindow';
 import './App.css';
 
 function App() {
-  const [selectedPost, setSelectedPost] = useState(null);
+  const [selectedPost, setSelectedPost] = useState(null); // logic used to determine the current post thats selected
 
   const [isSignedIn, setIsSignedIn] = useState(false); // logic used for sign in
 
@@ -93,7 +93,7 @@ function App() {
       return;
     }
     const user = users.find(
-      (u) => u.username === signInUsername && u.password === signInPassword
+      (u) => u.username === signInUsername && u.password === signInPassword // 
     );
     if (user) {
       setCurrentUser(user);
