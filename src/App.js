@@ -7,7 +7,7 @@ import './App.css';
 function App() {
   const [selectedPost, setSelectedPost] = useState(null); // logic used to determine the current post thats selected
 
-  const [isSignedIn, setIsSignedIn] = useState(false); // logic used for sign in
+  const [isSignedIn, setIsSignedIn] = useState(false);// logic used for sign in and seting true if the information is correct
 
   const [activeSection, setActiveSection] = useState('home'); // sets the base section of the website to home section
 
