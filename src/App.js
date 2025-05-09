@@ -7,7 +7,7 @@ import './App.css';
 function App() {
   const [selectedPost, setSelectedPost] = useState(null);
 
-  const [isSignedIn, setIsSignedIn] = useState(false);
+  const [isSignedIn, setIsSignedIn] = useState(false); // logic used for sign in
 
   const [activeSection, setActiveSection] = useState('home'); // sets the base section of the website to home section
 
