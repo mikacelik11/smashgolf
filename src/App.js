@@ -83,7 +83,7 @@ function App() {
     setSignUpPassword('');
     setIsSignUpModalOpen(true);
   };
-
+  // logic used to close the sign up window.
   const closeSignUpModal = () => {
     setIsSignUpModalOpen(false);
   };
