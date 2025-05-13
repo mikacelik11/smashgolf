@@ -190,3 +190,5 @@ path.join(process.cwd(), "generated/prisma/libquery_engine-darwin-arm64.dylib.no
 // file annotations for bundling tools to include these files
 path.join(__dirname, "schema.prisma");
 path.join(process.cwd(), "generated/prisma/schema.prisma")
+
+
