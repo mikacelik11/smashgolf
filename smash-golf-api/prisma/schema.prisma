@@ -1,30 +1,26 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
+// prisma/schema.prisma
 
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+// 1) Tell Prisma where your database lives
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")    // matches your .env key
+}
 
- generator client {
-   provider = "prisma-client-js"
-  
-   output   = "../generated/prisma"
- }
+// 2) The code generator
+generator client {
+  provider = "prisma-client-js"
+}
 
- datasource db {
-   provider = "postgresql"
-   url      = env("DATABASE_URL")
- }
+// 3) Your data models
+model User {
+  id           Int      @id @default(autoincrement())
+  username     String   @unique
+  passwordHash String
+  skill        String
+  location     String?
+  posts        GroupPost[]
+}
 
- model User {
-   id           Int     @id @default(autoincrement())
-   username     String  @unique
-   passwordHash String
-   skill        String
-   location     String?
-   posts        GroupPost[]   // relation to GroupPost
- }
-
-+// 👇 Add this model:
 model GroupPost {
   id           Int      @id @default(autoincrement())
   golfLocation String
@@ -35,3 +31,4 @@ model GroupPost {
   owner        User     @relation(fields: [ownerId], references: [id])
   ownerId      Int
 }
+

@@ -1,16 +1,14 @@
 // test-db.js
-const { PrismaClient } = require('./generated/prisma');
+require('dotenv').config();               // loads DATABASE_URL from .env
+const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
-console.log(Object.keys(prisma));
 
 async function main() {
+  // Fetch all users (should be empty array initially)
   const users = await prisma.user.findMany();
   console.log('Users:', users);
 }
 
 main()
-  .catch(e => console.error(e))
-  .finally(async () => {
-    await prisma.$disconnect();
-  });
-
+  .catch(console.error)
+  .finally(() => prisma.$disconnect());
