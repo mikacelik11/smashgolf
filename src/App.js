@@ -121,7 +121,7 @@ function App() {
 
     const userExists = users.some((u) => u.username === signUpUsername);
     if (userExists) {
-      setSignUpError('Username is already taken.');
+      setSignUpError('Username is already taken.'); // this way someone cant make an account with a username that already exists.
     } else {
       setUsers([...users, { username: signUpUsername, password: signUpPassword }]);
       setUsers([...users, newUser]);
