@@ -62,7 +62,7 @@ function App() {
     setIsEditingLocation(false);
   };
 
-    // test
+  
    // Open and reset the sign in modal
    const openSignInModal = () => {
     setSignInError('');
@@ -95,7 +95,7 @@ function App() {
       return;
     }
     const user = users.find(
-      (u) => u.username === signInUsername && u.password === signInPassword // 
+      (u) => u.username === signInUsername && u.password === signInPassword // if username and password match then the user is signed in
     );
     if (user) {
       setCurrentUser(user);
@@ -115,7 +115,7 @@ function App() {
       location: ''
     };
     if (!signUpUsername.trim() || !signUpPassword) {
-      setSignUpError('Username and Password are required');
+      setSignUpError('Username and Password are required'); // just logic that if a username or password isnt present then return a warning.
       return;
     }
 
