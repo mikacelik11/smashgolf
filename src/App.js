@@ -111,8 +111,8 @@ function App() {
     const newUser = {
       username: signUpUsername,
       password: signUpPassword,
-      skill: 'beginner',
-      location: ''
+      skill: 'beginner', // skill set to beginner
+      location: '' // no location set.
     };
     if (!signUpUsername.trim() || !signUpPassword) {
       setSignUpError('Username and Password are required'); // just logic that if a username or password isnt present then return a warning.
