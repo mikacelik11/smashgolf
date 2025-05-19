@@ -39,7 +39,7 @@ function App() {
   const [groupPosts, setGroupPosts] = useState([]); // list of group posts 
 
   const handleCreateGroup = (newPost) => {
-    setGroupPosts([...groupPosts, {id: Date.now(), ...newPost }])
+    setGroupPosts([...groupPosts, {id: Date.now(), ...newPost }]) // makes sure the group post is seen and also adds the correct date to it.
   }
 
   // handles the ability for a user to change there skill level in the profile section.
