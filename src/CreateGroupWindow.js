@@ -24,6 +24,7 @@ function CreateGroupWindow({ onClose, onCreateGroup, currentUser }) {
     onClose(); // closes the create group window
   };
 
+  //the logic for the group window.
   return (
     <div className="create-group-window">
       <h2>Create Group</h2> 
