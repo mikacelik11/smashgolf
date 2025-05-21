@@ -10,7 +10,7 @@ function CreateGroupWindow({ onClose, onCreateGroup, currentUser }) {
   const postGroup = () => {
     const newPost = {
       golfLocation, // vales assigned to the corresponding keys in the object
-      skill,
+      skill, 
       players,
       description,
       timestamp: new Date().toLocaleString(), // gives date on when group was posted
