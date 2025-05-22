@@ -98,7 +98,7 @@ function App() {
       (u) => u.username === signInUsername && u.password === signInPassword // if username and password match then the user is signed in
     );
     if (user) {
-      setCurrentUser(user);
+      setCurrentUser(user); // if user it true then the current user is set.
       setIsSignedIn(true);
       closeSignInModal();
     } else {
