@@ -102,7 +102,7 @@ function App() {
       setIsSignedIn(true);
       closeSignInModal();
     } else {
-      setSignInError('Invalid username or password.');
+      setSignInError('Invalid username or password.'); // else the user inputed and incorrect sign in passowrd.
     }
   };
 
