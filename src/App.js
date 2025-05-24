@@ -123,7 +123,7 @@ function App() {
     if (userExists) {
       setSignUpError('Username is already taken.'); // this way someone cant make an account with a username that already exists.
     } else {
-      setUsers([...users, { username: signUpUsername, password: signUpPassword }]);
+      setUsers([...users, { username: signUpUsername, password: signUpPassword }]); // else this means that the user doesnt exist thus an account can be made.
       setUsers([...users, newUser]);
       setCurrentUser(newUser);
       setIsSignedIn(true);
