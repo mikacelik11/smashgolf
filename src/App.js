@@ -1,3 +1,4 @@
+//SmashGolf!!!
 import React, { useState } from 'react';
 import CreateGroupWindow from './CreateGroupWindow';
 import NewWindow from 'react-new-window';
